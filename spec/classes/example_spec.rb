@@ -10,14 +10,14 @@ describe 'role_ids' do
           })
         end
 
-        context "role_ids class without any parameters" do
-          let(:params) {{ }}
+        context "role_ids class with monitor_interface set to eth0" do
+          let(:params) { {:monitor_interface => "eth0"} }
 
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('role_ids') }
        
-          it { is_expected.to contain_class('profile_base') }
-          it { is_expected.to contain_class('profile_base::rspec_monitor') }
+          it { is_expected.to contain_class('suricata') }
+          it { is_expected.to contain_class('scirius') }
 
         end
       end

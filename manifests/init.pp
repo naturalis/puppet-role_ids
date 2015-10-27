@@ -7,12 +7,11 @@
 # [*sample_parameter*]
 #   Explanation of what this parameter affects and what it defaults to.
 #
-class role_ids
-{
-  # a role includes one or more profiles and at least a 'base' profile
-#  include ::profile_base
-  # include rspec monitor to make rspec acceptance test available to monitor system
-#  include ::profile_base::rspec_monitor
-   include ::suricata
-   include ::scirius
+class role_ids(
+  $monitor_interface=eth1,
+){
+  class { '::suricata':
+    monitor_interface => $monitor_interface,
+  }
+  include ::scirius
 }

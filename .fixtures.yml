@@ -1,11 +1,10 @@
 fixtures:
   repositories:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
- 
-# role module layout, include profile base and ntp module
-    profile_base: "https://github.com/pgomersbach/naturalis-profile_base.git"
-    ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
-    rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
+    apt: "git://github.com/puppetlabs/puppetlabs-apt"
+    vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
+    suricata: "https://github.com/naturalis/suricata.git"
+    scirius: "https://github.com/naturalis/scirius.git"
 
   symlinks:
     role_ids: "#{source_dir}"
