@@ -9,9 +9,12 @@
 #
 class role_ids(
   $monitor_interface=eth1,
+  $scirius_ruleset_url='https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz',
 ){
   class { '::suricata':
     monitor_interface => $monitor_interface,
   }
-  include ::scirius
+  class { '::scirius':
+    scirius_ruleset_url => $scirius_ruleset_url,
+  }
 }
