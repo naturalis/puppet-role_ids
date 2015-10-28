@@ -5,6 +5,7 @@ fixtures:
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     suricata: "https://github.com/naturalis/suricata.git"
     scirius: "https://github.com/naturalis/scirius.git"
+    logrotate: "https://github.com/yo61/puppet-logrotate.git"
 
   symlinks:
     role_ids: "#{source_dir}"

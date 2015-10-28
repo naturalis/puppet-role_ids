@@ -16,5 +16,14 @@ class role_ids(
   } ->
   class { '::scirius':
     scirius_ruleset_url => $scirius_ruleset_url,
+  } ->
+
+  logrotate::rule { 'suricata':
+    path         => '/var/log/suricata/*.log /var/log/suricata/*.json',
+    rotate       => 3,
+    rotate_every => 'day',
+    missingok    => true,
+    compress     => false,
+    postrotate   => '/usr/bin/kill -HUP $(cat /var/run/suricata.pid)',
   }
 }

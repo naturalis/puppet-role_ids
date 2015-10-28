@@ -17,6 +17,7 @@ describe 'role_ids' do
           it { is_expected.to contain_class('role_ids') }
           it { is_expected.to contain_class('suricata') }
           it { is_expected.to contain_class('scirius') }
+          it { is_expected.to contain_logrotate__rule('suricata') }
 
         end
       end
