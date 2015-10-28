@@ -13,7 +13,7 @@ class role_ids(
 ){
   class { '::suricata':
     monitor_interface => $monitor_interface,
-  }
+  } ->
   class { '::scirius':
     scirius_ruleset_url => $scirius_ruleset_url,
   }
