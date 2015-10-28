@@ -19,11 +19,13 @@ class role_ids(
   } ->
 
   logrotate::rule { 'suricata':
-    path         => '/var/log/suricata/*.log /var/log/suricata/*.json',
-    rotate       => 3,
-    rotate_every => 'day',
-    missingok    => true,
-    compress     => false,
-    postrotate   => '/usr/bin/kill -HUP $(cat /var/run/suricata.pid)',
+    path          => '/var/log/suricata/*.log /var/log/suricata/*.json',
+    rotate        => 3,
+    rotate_every  => 'day',
+    missingok     => true,
+    compress      => false,
+    create        => true,
+    sharedscripts => true,
+    postrotate    => '/usr/bin/kill -HUP $(cat /var/run/suricata.pid)',
   }
 }
