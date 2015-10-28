@@ -15,7 +15,6 @@ describe 'role_ids' do
 
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('role_ids') }
-       
           it { is_expected.to contain_class('suricata') }
           it { is_expected.to contain_class('scirius') }
 
