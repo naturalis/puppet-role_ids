@@ -3,8 +3,8 @@ fixtures:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     apt: "git://github.com/puppetlabs/puppetlabs-apt"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
-    suricata: "https://github.com/naturalis/suricata.git"
-    scirius: "https://github.com/naturalis/scirius.git"
+    suricata: "https://github.com/naturalis/puppet-suricata.git"
+    scirius: "https://github.com/naturalis/puppet-scirius.git"
     logrotate: "https://github.com/yo61/puppet-logrotate.git"
 
   symlinks:
