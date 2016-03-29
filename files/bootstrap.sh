@@ -45,7 +45,7 @@ echo "Installing Puppet..."
 DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install puppet >/dev/null
 echo "Puppet installed!"
 echo "Cloning repo"
-git clone https://github.com/naturalis/puppet-role_ids.git
+git clone https://github.com/naturalis/puppet-role_ids.git role_ids
 cd role_ids
 echo "Installing gems"
 bundle install --path vendor/bundle
