@@ -10,7 +10,7 @@ set -e
 # Load up the release information
 . /etc/lsb-release
 
-REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-stable.deb"
+REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-${DISTRIB_CODENAME}.deb"
 
 #--------------------------------------------------------------------
 # NO TUNABLES BELOW THIS POINT
