@@ -55,7 +55,7 @@ echo "Cloning repo"
 git clone https://github.com/naturalis/puppet-role_ids.git role_ids
 cd role_ids
 echo "Installing gems"
-bundle install --path vendor/bundle
+bundle install --path vendor/bundle --without development system_tests
 echo "Preparing modules"
 bundle exec rake spec_prep
 cp -a spec/fixtures/modules/* /etc/puppet/modules/
