@@ -3,18 +3,21 @@
 # This bootstraps Puppet on Ubuntu 14.04 LTS and deploy this module
 # Usage:
 # wget https://raw.githubusercontent.com/naturalis/puppet-role_ids/master/files/bootstrap.sh
+# edit bootstrap.sh 
 # bash bootstrap.sh
 #
 set -e
 
+# enable filebeat?
+FILEBEAT=false
+#--------------------------------------------------------------------
+# NO TUNABLES BELOW THIS POINT
+#--------------------------------------------------------------------
 # Load up the release information
 . /etc/lsb-release
 
 REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-${DISTRIB_CODENAME}.deb"
 
-#--------------------------------------------------------------------
-# NO TUNABLES BELOW THIS POINT
-#--------------------------------------------------------------------
 if [ "$(id -u)" != "0" ]; then
   echo "This script must be run as root." >&2
   exit 1
@@ -53,4 +56,4 @@ echo "Preparing modules"
 bundle exec rake spec_prep
 cp -a spec/fixtures/modules/* /etc/puppet/modules/
 echo "Run puppet"
-puppet apply -e "class {'role_ids': monitor_interface => "em2"}"
+puppet apply -e "class {'role_ids': monitor_interface => "em2", enable_filebeat => ${FILEBEAT} }"
