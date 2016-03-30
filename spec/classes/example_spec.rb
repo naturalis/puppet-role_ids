@@ -90,8 +90,14 @@ rA==
           it { is_expected.to contain_package('python-textile') }
           it { is_expected.to contain_package('south') }
 
+          # contain files
+          it { should contain_file('suricataboot') }
+
           # contain logrotate rule
           it { is_expected.to contain_logrotate__rule('suricata') }
+
+          # contain cron
+          it { should contain_cron('suricataboot_cron') }
 
         end
       end

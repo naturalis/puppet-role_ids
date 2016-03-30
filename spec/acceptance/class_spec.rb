@@ -70,5 +70,9 @@ rA==
       end
     end
 
+    describe cron do
+      it { should have_entry('@reboot /usr/local/bin/suricataboot.sh') }
+    end
+
   end
 end

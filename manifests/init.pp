@@ -34,6 +34,20 @@ class role_ids(
     sharedscripts => true,
     postrotate    => '/usr/bin/kill -HUP $(cat /var/run/suricata.pid)',
   }
+
+  # create suricataboot.sh
+  file{ 'suricataboot':
+    path    => '/usr/local/bin/suricataboot.sh',
+    content => template('role_ids/suricataboot.sh.erb'),
+    mode    => '0544',
+  }
+  # run puppet at startup to configure and run suricata
+  cron { 'suricataboot_cron':
+    command => '/usr/local/bin/suricataboot.sh',
+    user    => root,
+    special => reboot,
+  }
+
   if ($enable_filebeat) {
     class { '::role_logging::beats':
       logstash_private_key => $logstash_private_key,
