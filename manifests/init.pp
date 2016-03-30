@@ -39,9 +39,14 @@ class role_ids(
     log_files_to_follow  => [
       {'paths'   => ['/var/log/suricata/eve.json'],
         'fields' => {
-          'type' => 'idslog',
+          'type' => 'idsevent',
         }
       },
+      {'paths'   => ['/var/log/suricata/suricata.log.json'],
+        'fields' => {
+          'type' => 'idslog',
+        }
+      }
     ],
   }
 }
