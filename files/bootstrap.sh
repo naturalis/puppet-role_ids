@@ -3,18 +3,22 @@
 # This bootstraps Puppet on Ubuntu 14.04 LTS and deploy this module
 # Usage:
 # wget https://raw.githubusercontent.com/naturalis/puppet-role_ids/master/files/bootstrap.sh
-# edit bootstrap.sh 
+# copy logstash private key to /etc/ssl/logstash_key.key and certificate to /etc/ssl/logstash_cert.crt
 # bash bootstrap.sh
 #
 set -e
 
 # enable filebeat?
-FILEBEAT=false
+FILEBEAT=true
+
 #--------------------------------------------------------------------
 # NO TUNABLES BELOW THIS POINT
 #--------------------------------------------------------------------
 # Load up the release information
 . /etc/lsb-release
+
+PRIVATEKEY=$(cat /etc/ssl/logstash_key.key)
+CERTIFICATE=$(cat /etc/ssl/logstash_cert.crt)
 
 REPO_DEB_URL="http://apt.puppetlabs.com/puppetlabs-release-${DISTRIB_CODENAME}.deb"
 
@@ -56,4 +60,4 @@ echo "Preparing modules"
 bundle exec rake spec_prep
 cp -a spec/fixtures/modules/* /etc/puppet/modules/
 echo "Run puppet"
-puppet apply -e "class {'role_ids': monitor_interface => "em2", enable_filebeat => ${FILEBEAT} }"
+puppet apply -e "class {'role_ids': monitor_interface => "em2", enable_filebeat => ${FILEBEAT}, logstash_private_key => ${PRIVATEKEY}, logstash_certificate => ${CERTIFICATE} }"
