@@ -11,8 +11,8 @@ class role_ids(
   $monitor_interface=eth1,
   $scirius_ruleset_url='https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz',
   $enable_filebeat=false,
-  $logstash_private_key,
-  $logstash_certificate,
+  $logstash_private_key='',
+  $logstash_certificate='',
   $logstash_servers=['piet.logstash.naturalis.nl'],
 ){
   class { '::suricata':
