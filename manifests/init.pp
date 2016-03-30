@@ -10,6 +10,9 @@
 class role_ids(
   $monitor_interface=eth1,
   $scirius_ruleset_url='https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz',
+  $logstash_private_key,
+  $logstash_certificate,
+  $logstash_servers=['piet.logstash.naturalis.nl'],
 ){
   class { '::suricata':
     monitor_interface => $monitor_interface,
@@ -27,5 +30,18 @@ class role_ids(
     create        => true,
     sharedscripts => true,
     postrotate    => '/usr/bin/kill -HUP $(cat /var/run/suricata.pid)',
+  }
+
+  class { '::role_logging::beats':
+    logstash_private_key => $logstash_private_key,
+    logstash_certificate => $logstash_certificate,
+    logstash_servers     => $logstash_servers,
+    log_files_to_follow  => [
+      {'paths'   => ['/var/log/suricata/eve.json'],
+        'fields' => {
+          'type' => 'idslog',
+        }
+      },
+    ],
   }
 }

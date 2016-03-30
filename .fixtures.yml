@@ -6,6 +6,8 @@ fixtures:
     suricata: "https://github.com/naturalis/puppet-suricata.git"
     scirius: "https://github.com/naturalis/puppet-scirius.git"
     logrotate: "https://github.com/yo61/puppet-logrotate.git"
+    role_logging: "https://github.com/naturalis/puppet-role_logging.git"
+    wget: "https://github.com/maestrodev/puppet-wget.git"
 
   symlinks:
     role_ids: "#{source_dir}"
