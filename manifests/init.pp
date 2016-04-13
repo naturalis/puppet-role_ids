@@ -8,7 +8,7 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class role_ids(
-  $monitor_interface=eth1,
+  $monitor_interface=em2,
   $scirius_ruleset_url='https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz',
   $enable_filebeat=false,
   $logstash_private_key_file='/etc/ssl/logstash_key.key',
@@ -64,7 +64,8 @@ class role_ids(
         },
         {'paths'   => ['/var/log/suricata/suricata.log.json'],
           'fields' => {
-            'type' => 'idslog',
+            'type'     => 'idslog',
+            'testdata' => 'true',
           }
         }
       ],
