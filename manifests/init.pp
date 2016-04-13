@@ -56,7 +56,10 @@ class role_ids(
       log_files_to_follow  => [
         {'paths'   => ['/var/log/suricata/eve.json'],
           'fields' => {
-            'type' => 'idsevent',
+            'type'             => 'idsevent',
+            'geoip_src_field'  => 'source_ip_field',
+            'geoip_dest_field' => 'destination_ip_field',
+            'testdata'         => 'true',
           }
         },
         {'paths'   => ['/var/log/suricata/suricata.log.json'],

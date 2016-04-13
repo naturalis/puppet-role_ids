@@ -23,6 +23,8 @@ PuppetLint.configuration.send('disable_class_parameter_defaults')
 PuppetLint.configuration.send('disable_class_inherits_from_params_class')
 # Module name does not match class name
 PuppetLint.configuration.send('disable_autoloader_layout')
+# Bug in https://github.com/naturalis/puppet-role_logging, please remove when fixed
+PuppetLint.configuration.send('disable_quoted_booleans')
 
 exclude_paths = [
   "bundle/**/*",
