@@ -32,7 +32,7 @@ class role_ids(
     compress      => false,
     create        => true,
     sharedscripts => true,
-    postrotate    => '/usr/bin/kill -HUP $(cat /var/run/suricata.pid)',
+    postrotate    => '/bin/kill -HUP $(cat /var/run/suricata.pid)',
   }
 
   # create suricataboot.sh
