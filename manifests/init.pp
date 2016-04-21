@@ -10,6 +10,8 @@
 class role_ids(
   $monitor_interface=em2,
   $scirius_ruleset_url='https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz',
+  $scirius_admin='admin',
+  $scirius_admin_pass='changeme',
   $enable_filebeat=false,
   $logstash_private_key_file='/etc/ssl/logstash_key.key',
   $logstash_certificate_file='/etc/ssl/logstash_cert.crt',
@@ -22,6 +24,8 @@ class role_ids(
   } ->
   class { '::scirius':
     scirius_ruleset_url => $scirius_ruleset_url,
+    scirius_admin       => $scirius_admin,
+    scirius_admin_pass  => $scirius_admin_pass,
   } ->
 
   logrotate::rule { 'suricata':
