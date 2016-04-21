@@ -19,6 +19,19 @@ class role_ids(
   $logstash_certificate=file($logstash_certificate_file),
   $logstash_servers=['piet.logstash.naturalis.nl'],
 ){
+  # validate parameters
+  validate_string($monitor_interface)
+  validate_string($scirius_ruleset_url)
+  validate_string($scirius_admin)
+  validate_string($scirius_admin_pass)
+  validate_bool($enable_filebeat)
+  validate_absolute_path($logstash_private_key_file)
+  validate_absolute_path($logstash_certificate_file)
+  validate_string($logstash_private_key)
+  validate_string($logstash_certificate)
+  validate_array($logstash_servers)
+
+
   class { '::suricata':
     monitor_interface => $monitor_interface,
   } ->
