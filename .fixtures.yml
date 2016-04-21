@@ -8,6 +8,7 @@ fixtures:
     logrotate: "https://github.com/yo61/puppet-logrotate.git"
     role_logging: "https://github.com/naturalis/puppet-role_logging.git"
     wget: "https://github.com/maestrodev/puppet-wget.git"
+    sensu: "https://github.com/sensu/sensu-puppet.git"
 
   symlinks:
     role_ids: "#{source_dir}"
